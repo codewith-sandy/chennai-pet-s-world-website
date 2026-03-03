@@ -1,4 +1,13 @@
+import { Link } from "react-router-dom";
 import { MapPin, Phone, Instagram } from "lucide-react";
+
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Our Pets", to: "/pets" },
+  { label: "Reviews", to: "/reviews" },
+  { label: "Contact", to: "/contact" },
+];
 
 const Footer = () => {
   return (
@@ -14,14 +23,14 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-3">Quick Links</h4>
             <div className="flex flex-col gap-2">
-              {["Home", "About", "Our Pets", "Reviews", "Contact"].map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(" ", "")}`}
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
                   className="text-primary-foreground/70 hover:text-secondary transition-colors text-sm font-medium"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
